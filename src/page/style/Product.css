@@ -1,0 +1,101 @@
+.searchs {
+  width: 100%;
+  margin-top: 30px;
+  height: 100px;
+  margin: 0 1px;
+  box-shadow: 3px 5px #3c5b6f;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.showproduct {
+  width: 100%;
+  min-height: 100px;
+  margin: 30px 1px;
+  box-shadow: 3px 5px #3c5b6f;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  border: 1px solid #fff;
+  padding-left: 42px;
+  padding-top: 10px;
+}
+
+.input {
+  margin-left: 20px;
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-button {
+  width: 200px;
+  margin-right: 0px;
+  position: absolute;
+  right: 5px;
+}
+
+/* -------------Add product  from*/
+
+.text-detail {
+  margin-top: 30px;
+  font-weight: bold;
+}
+.spacing {
+  margin-top: 20px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+}
+.spacing-delivery {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.spacing-row {
+  padding-right: 20px;
+}
+
+.input-size {
+  margin-top: 19px;
+  margin-left: 35px;
+}
+.input-size-2 {
+  margin-top: 19px;
+  margin-left: 20px;
+}
+
+.position-brn {
+  margin-left: 1340px;
+}
+
+/* -----------------------detailRroduct */
+
+.font-1 {
+  font-weight: inherit;
+  font-size: 15px;
+  color: #696e72;
+}
+
+.font-2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.showdetail {
+  width: 100%;
+  min-height: 100px;
+  margin: 30px 1px;
+  box-shadow: 3px 5px #3c5b6f;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
+.pading-detail {
+  padding-bottom: 30px;
+}
