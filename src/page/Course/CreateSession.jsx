@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import '../style/Product.css'
 
-export const DetailPD = () => {
+export const CreateSession = () => {
   return (
     <div>
-      <Link to={"/Product"}> {"<"} สินค้าทั้งหมด</Link>
+      <Link to={"/Course"}> {"<"} สินค้าทั้งหมด</Link>
       <h2>รายละเอียดสินค้า ข้อมูลตัวอย่าง 5</h2>
       <div>
         <div className="row today">

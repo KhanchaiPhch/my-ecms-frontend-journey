@@ -5,14 +5,15 @@ import React from "react";
 import "../style/Dashboard.css";
 
 // import { fetchTodos } from "../data/test";
-
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Container from 'react-bootstrap/Container';
+// import { useContext } from "react";
+// import { AppContext } from "../../conponent/AppContext";
 
 
 const Dashboard = () => {
-  
   // const [Dashboard, setDashboard] = useState([]);
-  
+
   // useEffect(()=> {
   //   setDashboard(fetchTodos);
   // },[])
@@ -22,8 +23,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard / ภาพรวม</h1>
-      <div className="containerDB">
+      <Container>
         <div className="row today">
           <div className="intoday col">
             <div className="i-con">
@@ -131,15 +131,15 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="graph row">
+        {/* <div className="graph row">
           <div className="product-in col">
-            <p>graph</p>
+          <p>graph</p>
           </div>
           <div className="product-exports col">
-            <p>graph</p>
+          <p>graph</p>
           </div>
-        </div>
-      </div>
+          </div> */}
+          </Container>
     </div>
   );
 };

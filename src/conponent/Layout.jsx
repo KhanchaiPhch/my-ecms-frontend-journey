@@ -3,19 +3,23 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { Navbar } from "./Navbar";
 import { Bodys } from "./Body";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Container from 'react-bootstrap/Container';
 
-const Layout = ({ setToken  }) => {
-
+const Layout = ({ setToken }) => {
   return (
-    <div className="containers">
-      <div className="navbar">
-        <Navbar />
+    <Container fluid className="p-0">
+      <div className="d-flex">
+        <div className="navbar">
+          <Navbar />
+        </div>
+        <div className="w-100">
+          <Bodys setToken={setToken} />
+        </div>
       </div>
-      <div className="body">
-        <Bodys setToken={setToken} />
-      </div>
-    </div>
+    </Container>
   );
-};
+}
+
 
 export default Layout;

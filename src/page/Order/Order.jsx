@@ -50,7 +50,7 @@ const Order = () => {
         <tr key={index} style={{ height: "50px", textAlign: "center" }}>
           <td
             style={{
-              width: "230px",
+              width: "230px", 
               textAlign: "center",
             }}
           >
@@ -84,7 +84,6 @@ const Order = () => {
 
   return (
     <div>
-      <h1>Order</h1>
       <div className="row  searchs ">
         <div className="input">
           <div>จำนวนสินค้าทั้งหมด</div>

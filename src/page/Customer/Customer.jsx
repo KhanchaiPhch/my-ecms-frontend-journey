@@ -5,7 +5,6 @@ import "../style/Customer.css";
 const Customers = () => {
   return (
     <div>
-      <h1>Customers</h1>
       <div className="row  searchs ">
         <div className="input">
           <div>จำนวนสินค้าทั้งหมด</div>

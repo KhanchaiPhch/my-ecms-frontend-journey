@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Product.css";
-export const Addproduct = () => {
+import { useContext } from "react";
+import { AppContext } from "../../conponent/AppContext";
+export const AddCourse = () => {
+
+ const { setPageName } = useContext(AppContext);
   return (
     <div>
-      <Link to={"/Product"}> {"<"} สินค้าทั้งหมด</Link>
-      <h2 className="spacing">สินค้านำเข้าใหม่</h2>
+      <Link to={"/Course"}> {"<"} สินค้าทั้งหมด</Link>
       <div className="showproduct">
         <div className="i-con">
           <i className="bi bi-archive">
@@ -124,10 +127,13 @@ export const Addproduct = () => {
             </div>
           </div>
         </div>
-        <Link to={"/DetailPD"}>
+        <Link to={"/CreateSession"}>
           <button
             className="btn btn-secondary  position-brn"
             style={{ width: "140px", fontSize: "17px", marginBottom: "10px" }}
+            onClick={() => {
+              setPageName("Create Session")
+            }}
           >
             {" "}
             สร้างรายการ
@@ -136,4 +142,5 @@ export const Addproduct = () => {
       </div>
     </div>
   );
+
 };

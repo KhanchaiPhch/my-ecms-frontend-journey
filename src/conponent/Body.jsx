@@ -2,15 +2,18 @@ import React from "react";
 import { Headers } from "./Header";
 // import { Footers } from "./Footer";
 import { Displays } from "./Display";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Container from 'react-bootstrap/Container';
 
+export const Bodys = ({ setToken }) => {
 
-export const Bodys = ({setToken}) => {
-
-    return (
-      <div className="body">
+  return (
+    <Container>
+      <div>
         <Headers setToken={setToken} />
         <Displays />
         {/* <Footers /> */}
       </div>
-    );
+    </Container>
+  );
 }

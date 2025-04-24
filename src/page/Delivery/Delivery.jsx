@@ -5,7 +5,6 @@ import "../style/Delivery.css";
 const Deliverys = () => {
   return (
     <div>
-      <h1>Deliverys</h1>
       <div className="row  searchs ">
         <div className="input">
           <div>จำนวนสินค้าทั้งหมด</div>
