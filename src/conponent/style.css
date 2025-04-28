@@ -104,10 +104,10 @@ a {
 }
 
 /* --------------------------------------------------------------- */
-.Header {
+/* .Header { */
   /* width: 97%; */
   /* box-shadow: 3px 5px #3C5B6F */
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 20px;
   border-radius: 3px;
   border: 1px solid #fff;
@@ -115,7 +115,7 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-}
+} */
 .btn-account {
   display: flex;
   align-items: center;

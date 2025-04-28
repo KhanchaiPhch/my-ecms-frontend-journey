@@ -20,8 +20,10 @@ export const Navbar = () => {
   return (
     <Container>
       <div >
-        <div className="text-logo text-center">
-          <h1>ECMS</h1>
+        <div className="text-center text-justify items-center flex m-6">
+          <h1 className="text-4xl font-bold text-white-600 ">
+            ECMS
+          </h1>
         </div>
 
         <div className="dashbord">
@@ -29,14 +31,14 @@ export const Navbar = () => {
             <button
               className={
                 "btn btn-outline-secondary " +
-                (tab === "Dashboard" ? "btn-secondary" : "")
+                (tab === "Dashboard" ? "btn btn-secondary border-white" : "")
               }
               onClick={() => {
                 setTeb("Dashboard");
                 setPageName("dashboard");
               }}
               ref={DashboardRef}
-              
+
             >
               <i className="bi bi-clipboard-data">
                 <svg
@@ -65,10 +67,10 @@ export const Navbar = () => {
               <button
                 className={
                   "btn btn-outline-secondary " +
-                  (tab === "Course" ? "btn-secondary" : "")
+                  (tab === "Course" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
-                  setTeb("Course"); 
+                  setTeb("Course");
                   setPageName("Course");
                 }}
               >
@@ -92,8 +94,8 @@ export const Navbar = () => {
             <Link to={"/Order"}>
               <button
                 className={
-                  "btn btn-outline-secondary" +
-                  (tab === "Order" ? "btn btn-secondary" : "")
+                  "btn btn-outline-secondary " +
+                  (tab === "Order" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
                   setTeb("Order");
@@ -121,8 +123,8 @@ export const Navbar = () => {
             <Link to={"/Delivery"}>
               <button
                 className={
-                  "btn btn-outline-secondary" +
-                  (tab === "Delivery" ? "btn btn-secondary" : "")
+                  "btn btn-outline-secondary " +
+                  (tab === "Delivery" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
                   setTeb("Delivery");
@@ -149,8 +151,8 @@ export const Navbar = () => {
             <Link to={"/Customer"}>
               <button
                 className={
-                  "btn btn-outline-secondary" +
-                  (tab === "Customer" ? "btn btn-secondary" : "")
+                  "btn btn-outline-secondary " +
+                  (tab === "Customer" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
                   setTeb("Customer");
@@ -179,8 +181,8 @@ export const Navbar = () => {
           <Link to={"/Accounts"}>
             <button
               className={
-                "btn btn-outline-secondary" +
-                (tab === "Accounts" ? "btn btn-secondary" : "")
+                "btn btn-outline-secondary " +
+                (tab === "Accounts" ? "btn btn-secondary border-white" : "")
               }
               onClick={() => {
                 setTeb("Accounts");

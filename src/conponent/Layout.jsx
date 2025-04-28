@@ -1,6 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
 import { Navbar } from "./Navbar";
 import { Bodys } from "./Body";
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -13,7 +11,7 @@ const Layout = ({ setToken }) => {
         <div className="navbar">
           <Navbar />
         </div>
-        <div className="w-100">
+        <div className="w-100 bg-gray-100">
           <Bodys setToken={setToken} />
         </div>
       </div>

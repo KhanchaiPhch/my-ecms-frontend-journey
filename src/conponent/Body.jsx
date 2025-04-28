@@ -8,12 +8,12 @@ import Container from 'react-bootstrap/Container';
 export const Bodys = ({ setToken }) => {
 
   return (
-    <Container>
-      <div>
+    <>
+      {/* <Container>  */}
         <Headers setToken={setToken} />
         <Displays />
         {/* <Footers /> */}
-      </div>
-    </Container>
+      {/* </Container> */}
+    </>
   );
 }

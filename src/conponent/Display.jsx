@@ -7,8 +7,10 @@ import { Outlet } from "react-router-dom";
 
 export const Displays = () => {
     return (
-            <div>
+        <div>
+            <Container>
                 <Outlet />
-            </div>
+            </Container>
+        </div>
     )
 }
