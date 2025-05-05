@@ -3,12 +3,11 @@ import {  useRef } from "react";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect } from "react";
-import "./App.css";
+// import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./conponent/Layout";
-
 
 import { AddCourse } from "./page/Course/AddCourse";
 import Course from "./page/Course/Course";

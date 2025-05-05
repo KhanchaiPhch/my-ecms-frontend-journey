@@ -11,7 +11,7 @@ const Layout = ({ setToken }) => {
         <div className="navbar">
           <Navbar />
         </div>
-        <div className="w-100 bg-gray-100">
+        <div className="w-100 bg-gray-200">
           <Bodys setToken={setToken} />
         </div>
       </div>

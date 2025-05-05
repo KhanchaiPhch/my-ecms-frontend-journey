@@ -20,7 +20,7 @@ export const Navbar = () => {
   return (
     <Container>
       <div >
-        <div className="text-center text-justify items-center flex m-6">
+        <div className="text-center justify-center items-center flex mt-8 mb-12">
           <h1 className="text-4xl font-bold text-white-600 ">
             ECMS
           </h1>
@@ -30,7 +30,7 @@ export const Navbar = () => {
           <Link to={"/"}>
             <button
               className={
-                "btn btn-outline-secondary " +
+                "btn btn-outline-secondary" +
                 (tab === "Dashboard" ? "btn btn-secondary border-white" : "")
               }
               onClick={() => {

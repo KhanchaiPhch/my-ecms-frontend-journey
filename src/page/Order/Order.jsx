@@ -18,7 +18,7 @@ const Order = () => {
   }, []);
 
   useEffect(() => {
-    setNumPage(Math.ceil(todos.length / pages)); 
+    setNumPage(Math.ceil(todos.length / pages));
   }, [todos]);
 
   // useEffect(() => {
@@ -50,7 +50,7 @@ const Order = () => {
         <tr key={index} style={{ height: "50px", textAlign: "center" }}>
           <td
             style={{
-              width: "230px", 
+              width: "230px",
               textAlign: "center",
             }}
           >
@@ -84,87 +84,6 @@ const Order = () => {
 
   return (
     <div>
-      <div className="row  searchs ">
-        <div className="input">
-          <div>จำนวนสินค้าทั้งหมด</div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="searchs"
-            style={{ width: "200px", fontSize: "17px" }}
-          />
-        </div>
-        <div className="btn-button">
-          <div>
-            <Link to={"/Addorders"}>
-              <button
-                className="btn btn-secondary "
-                style={{ width: "140px", fontSize: "17px" }}
-              >
-                เบิก
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="row showorder">
-        <p>ทั้งหมด</p>
-        <table className="table product-tb" style={{ width: "97%" }}>
-          <thead>
-            <tr
-              className="table-secondary"
-              style={{ height: "50px", textAlign: "center" }}
-            >
-              <td>#</td>
-              <td>รหัส</td>
-              <td>ชื่อสินค้า</td>
-              <td>คงเหลือ</td>
-            </tr>
-          </thead>
-          <tbody>{todoList}</tbody>
-        </table>
-        <div
-          style={{
-            margin: "10px",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          <button
-            className="btn btn-outline-primary"
-            onClick={() => {
-              setCurPage(1);
-            }}
-          >
-            Frist
-          </button>
-          <button
-            className="btn btn-outline-primary"
-            onClick={() => {
-              if (curPage > 1) setCurPage(curPage - 1);
-            }}
-          >
-            Previus
-          </button>
-          {curPage} / {numPage}
-          <button
-            className="btn btn-outline-primary"
-            onClick={() => {
-              if (curPage < numPage) setCurPage(curPage + 1);
-            }}
-          >
-            Next
-          </button>
-          <button
-            className="btn btn-outline-primary"
-            onClick={() => {
-              setCurPage(Math.ceil(todos.length / pages));
-            }}
-          >
-            Last
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
