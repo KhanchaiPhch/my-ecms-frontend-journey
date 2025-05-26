@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Container, Table, Button, ButtonGroup } from "react-bootstrap";
-import { AppContext } from "../../conponent/AppContext";
+import { AppContext } from "../../../conponent/AppContext";
 import { Link } from "react-router-dom";
-import "../style/Product.css";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Course = () => {
@@ -12,9 +12,12 @@ const Course = () => {
   const [flattenedSessions, setFlattenedSessions] = useState([]);
   const { setPageName } = useContext(AppContext);
   const [courseAll, setCourseAll] = useState([])
+  const [courseSelect, setCourseSelect] = useState([])
+
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = sessionStorage.getItem("token")
       try {
         const res = await axios.post("http://localhost:9999/courses/showCourse", {
           courseId: "C001",
@@ -23,7 +26,7 @@ const Course = () => {
           headers: {
             // Bearer
             "content-Type": "application/json",
-            authorization: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzQ4ZmFhZGYxMWQ1YmM1MTE2OTI0NWUiLCJ1c2VybmFtZSI6ImhzeSIsInJvbGVzIjoiSHIiLCJzdGF0dXMiOiJpbmFjdGl2ZSIsImlhdCI6MTc0NjI1ODk1NCwiZXhwIjoxNzQ2ODYzNzU0fQ.sSAZKxS3gg8lHpnf3uJsXIHycwQSP67g4Te_Y3V_-p8`,
+            "authorization": token,
           }
         })
 
@@ -46,8 +49,26 @@ const Course = () => {
   }, []);
 
   useEffect(() => {
-    setPageName("Course");
+    setPageName("คอร์ส");
   }, [setPageName]);
+
+  const navigate = useNavigate();
+  const CourseDetailReq = async () => {
+    const token = sessionStorage.getItem("token")
+    const reqData = await axios.post("http://localhost:9999/courses/courseDetail", {
+      "courseId": "C004",
+      "sessionId": "S001"
+
+    }, {
+      headers: {
+        authorization: token,
+        "Content-Type": "application/json"
+      }
+    })
+    const resdata = reqData.data.data
+    setCourseSelect(resdata)
+    console.log(resdata)
+  }
 
   // ฟิลเตอร์ข้อมูลตามสถานะ
   const filteredSessions = flattenedSessions.filter((item) => {
@@ -102,6 +123,12 @@ const Course = () => {
           >
             อบรมเสร็จ
           </Button>
+          <Button
+            variant={filterStatus === "all" ? "btn btn-secondary" : "btn btn-outline-secondary"}
+            onClick={() => handleFilterChange("all")}
+          >
+            ทั้งหมด
+          </Button>
         </ButtonGroup>
 
         {/* Table */}
@@ -136,7 +163,16 @@ const Course = () => {
                     <td>{item.hours}</td>
                     <td>{item.trainingLocation}</td>
                     {/* <td>{item.status}</td> */}
-                    <td><button type="button" className="btn btn-outline-success pt-[1px] pb-[1px]">เปิด</button></td>
+                    <td>
+                      {/* <Link to={"/CourseDetail"}> */}
+                      <button onClick={async () => {
+                        await CourseDetailReq(); // รอให้โหลดข้อมูลเสร็จ
+                        navigate("/CourseDetail"); // แล้วค่อยเปลี่ยนหน้า
+                      }}
+                        className="btn btn-outline-success pt-[1px] pb-[1px]"
+                      >เปิด</button>
+                      {/* </Link> */}
+                    </td>
                   </tr>
                 ))
               ) : (

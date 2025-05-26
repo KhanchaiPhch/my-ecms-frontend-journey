@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../style/Customer.css";
 
-const Customers = () => {
+const Employee = () => {
   return (
     <div>
+      emp
     </div>
   );
 };
 
-export default Customers;
+export default Employee;

@@ -1,5 +1,5 @@
 
-import {  useRef } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect } from "react";
@@ -9,19 +9,16 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./conponent/Layout";
 
-import { AddCourse } from "./page/Course/AddCourse";
-import Course from "./page/Course/Course";
-import { CreateSession } from "./page/Course/CreateSession";
+import { AddCourse } from "./page/hr/Course/AddCourse";
+import Course from "./page/hr/Course/Course";
+import CourseDetail from "./page/hr/Course/CourseDetail";
+import { CreateSession } from "./page/hr/Course/CreateSession";
 
-import Dashboard from "./page/Dashboard/Dashboard";
-import Order from "./page/Order/Order";
-import Deliverys from "./page/Delivery/Delivery";
-import Customers from "./page/Customer/Customer";
-import Accounts from "./page/Account/Accounts";
-
-import { Addorders } from "./page/Order/Addorders";
-import { Adddelivery } from "./page/Delivery/Adddelivery";
-import { Addcustomer } from "./page/Customer/Addcustomer";
+import { Requset } from "./page/hr/Requset/Requset";
+import Dashboard from "./page/hr/Dashboard/Dashboard";
+import Employee from "./page/hr/Employee/Employee";
+import Accounts from "./page/hr/Account/Accounts";
+import Results from "./page/hr/Results/Results";
 import { Login } from "./page/Login";
 
 function App() {
@@ -29,11 +26,12 @@ function App() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    setToken('11')
+    const token = sessionStorage.getItem("token")
+    setToken(token)
   }, []);
 
-  if (token === "") return <Login setToken={setToken} />;
-  else 
+  if (!token) return <Login setToken={setToken} />;
+  else
     return (
       <div>
         <HashRouter>
@@ -47,16 +45,15 @@ function App() {
             >
               <Route path="/" element={<Dashboard />} />
               <Route path="/Course" element={<Course />} />
+              <Route path="/CourseDetail" element={<CourseDetail />} />
               <Route path="/AddCourse" element={<AddCourse />} />
               <Route path="/CreateSession" element={<CreateSession />} />
-              
-              <Route path="/Order" element={<Order />} />
-              <Route path="/Delivery" element={<Deliverys />} />
-              <Route path="/Customer" element={<Customers />} />
+
+              <Route path="/Requset" element={<Requset />} />
+              <Route path="/Employee" element={<Employee />} />
               <Route path="/Accounts" element={<Accounts />} />
-              <Route path="/Addorders" element={<Addorders />} />
-              <Route path="/Adddelivery" element={<Adddelivery />} />
-              <Route path="/Addcustomer" element={<Addcustomer />} />
+              <Route path="/Results" element={<Results />} />
+              {/* <Route path="/Addcustomer" element={<Addcustomer />} /> */}
             </Route>
           </Routes>
         </HashRouter>

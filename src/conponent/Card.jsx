@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CardItem = ({ title, number }) => (
     <div className="drop-shadow-lg bg-white p-3 rounded flex justify-between items-center w-[410px] 
     hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer mb-2">
@@ -23,14 +21,14 @@ const CardItem = ({ title, number }) => (
     </div>
 );
 
-const Card = () => {
-    return (
-        <div className="flex flex-col">
-            {cardData.map((item, index) => (
-                <CardItem key={index} title={item.title} number={item.number} />
-            ))}
-        </div>
-    );
-};
+// const Card = () => {
+//     return (
+//         <div className="flex flex-col">
+//             {cardData.map((item, index) => (
+//                 <CardItem key={index} title={item.title} number={item.number} />
+//             ))}
+//         </div>
+//     );
+// };
 
 export default CardItem;

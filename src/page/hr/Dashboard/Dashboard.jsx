@@ -3,18 +3,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container';
-import CardItem from "../../conponent/Card";
+import CardItem from "../../../conponent/Card";
 
 const Dashboard = () => {
   const [Dashboard, setDashboard] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = sessionStorage.getItem("token")
       try {
         const response = await axios.get("http://localhost:9999/dashboard/dashboard", {
           headers: {
             // Bearer
-            "authorization": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzQ4ZmFhZGYxMWQ1YmM1MTE2OTI0NWUiLCJ1c2VybmFtZSI6ImhzeSIsInJvbGVzIjoiSHIiLCJzdGF0dXMiOiJpbmFjdGl2ZSIsImlhdCI6MTc0NjI1ODk1NCwiZXhwIjoxNzQ2ODYzNzU0fQ.sSAZKxS3gg8lHpnf3uJsXIHycwQSP67g4Te_Y3V_-p8`, // หรือใช้ token จาก props/context
+            "authorization": token, // หรือใช้ token จาก props/context
           },
         });
         setDashboard(response.data);

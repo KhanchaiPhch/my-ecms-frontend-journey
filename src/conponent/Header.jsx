@@ -6,6 +6,7 @@ import { AppContext } from "./AppContext";
 
 export const Headers = ({ setToken }) => {
   const Logout = () => {
+    sessionStorage.removeItem("token")
     setToken('')
   }
   const { pageName } = useContext(AppContext)

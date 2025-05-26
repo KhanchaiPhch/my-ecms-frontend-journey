@@ -35,7 +35,7 @@ export const Navbar = () => {
               }
               onClick={() => {
                 setTeb("Dashboard");
-                setPageName("dashboard");
+                setPageName("ภาพรวม");
               }}
               ref={DashboardRef}
 
@@ -54,12 +54,12 @@ export const Navbar = () => {
                   <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
                 </svg>
               </i>
-              Dashboard
+              ภาพรวม
             </button>
           </Link>
         </div>
 
-        <label>Options</label>
+        <label>ตัวเลือก</label>
 
         <div className="Menu">
           <div className="item">
@@ -71,7 +71,7 @@ export const Navbar = () => {
                 }
                 onClick={() => {
                   setTeb("Course");
-                  setPageName("Course");
+                  setPageName("คอร์ส");
                 }}
               >
                 <i className="bi bi-box-seam">
@@ -86,20 +86,20 @@ export const Navbar = () => {
                     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
                   </svg>
                 </i>
-                Course
+                คอร์ส
               </button>
             </Link>
           </div>
           <div className="item">
-            <Link to={"/Order"}>
+            <Link to={"/Requset"}>
               <button
                 className={
                   "btn btn-outline-secondary " +
-                  (tab === "Order" ? "btn btn-secondary border-white" : "")
+                  (tab === "Requset" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
-                  setTeb("Order");
-                  setPageName("Order");
+                  setTeb("Requset");
+                  setPageName("คำขอ");
                 }}
               >
                 <i className="bi bi-card-checklist">
@@ -115,20 +115,20 @@ export const Navbar = () => {
                     <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0" />
                   </svg>
                 </i>
-                Order
+                คำขอ
               </button>
             </Link>
           </div>
           <div className="item">
-            <Link to={"/Delivery"}>
+            <Link to={"/Results"}>
               <button
                 className={
                   "btn btn-outline-secondary " +
-                  (tab === "Delivery" ? "btn btn-secondary border-white" : "")
+                  (tab === "Results" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
-                  setTeb("Delivery");
-                  setPageName("Delivery");
+                  setTeb("Results");
+                  setPageName("ผลลัพธ์การอบรม");
                 }}
               >
                 <i className="bi bi-truck">
@@ -143,20 +143,20 @@ export const Navbar = () => {
                     <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
                   </svg>
                 </i>
-                Delivery
+                ผลลัพธ์การอบรม
               </button>
             </Link>
           </div>
           <div className="item">
-            <Link to={"/Customer"}>
+            <Link to={"/Employee"}>
               <button
                 className={
                   "btn btn-outline-secondary " +
-                  (tab === "Customer" ? "btn btn-secondary border-white" : "")
+                  (tab === "Employee" ? "btn btn-secondary border-white" : "")
                 }
                 onClick={() => {
-                  setTeb("Customer");
-                  setPageName("Cuctomer");
+                  setTeb("Employee");
+                  setPageName("พนักงาน");
                 }}
               >
                 {" "}
@@ -172,7 +172,7 @@ export const Navbar = () => {
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                   </svg>
                 </i>
-                Customer
+                พนักงาน
               </button>
             </Link>
           </div>
@@ -186,7 +186,7 @@ export const Navbar = () => {
               }
               onClick={() => {
                 setTeb("Accounts");
-                setPageName("Account");
+                setPageName("โปรไฟล์");
               }}
             >
               {" "}
@@ -202,7 +202,7 @@ export const Navbar = () => {
                   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                 </svg>
               </i>
-              Account
+              โปรไฟล์
             </button>
           </Link>
         </div>
