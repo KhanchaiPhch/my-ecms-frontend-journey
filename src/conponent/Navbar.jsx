@@ -30,7 +30,7 @@ export const Navbar = () => {
           <Link to={"/"}>
             <button
               className={
-                "btn btn-outline-secondary" +
+                "btn btn-outline-secondary " +
                 (tab === "Dashboard" ? "btn btn-secondary border-white" : "")
               }
               onClick={() => {

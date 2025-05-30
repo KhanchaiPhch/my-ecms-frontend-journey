@@ -186,6 +186,7 @@ const Course = () => {
               )}
             </tbody>
           </Table>
+
         </div>
 
         {/* Pagination + Create button */}
@@ -203,15 +204,26 @@ const Course = () => {
             ))}
           </div>
 
-          <Link to={"/CreateCourse"}>
-            <button
-              className="btn btn-dark"
-              style={{ width: "140px", fontSize: "17px" }}
-              onClick={() => setPageName("สร้างคอร์ส")}
-            >
-              สร้างคอร์ส
-            </button>
-          </Link>
+          <div className="flex gap-3">
+            <Link to={"/CreateSession"}>
+              <button
+                className="btn btn-outline-primary w-100"
+                style={{ width: "140px", fontSize: "17px" }}
+                onClick={() => setPageName("สร้างคอร์ส")}
+              >
+                สร้างรอบ
+              </button>
+            </Link>
+            <Link to={"/CreateCourse"}>
+              <button
+                className="btn btn-outline-success w-100"
+                style={{ width: "140px", fontSize: "17px" }}
+                onClick={() => setPageName("สร้างคอร์ส")}
+              >
+                สร้างคอร์ส
+              </button>
+            </Link>
+          </div>
         </div>
       </Container>
     </div>

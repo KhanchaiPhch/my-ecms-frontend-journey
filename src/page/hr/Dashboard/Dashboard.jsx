@@ -42,7 +42,7 @@ const Dashboard = () => {
     <>
       {/* <Container> */}
       {/* Debug border-2 border-rose-500 */}
-      <div className="flex flex-wrap justify-between gap-3">
+      <div className="flex flex-wrap justify-between gap-2">
         {cardData.map((item, index) => (
           <CardItem key={index} title={item.title} number={item.number} />
         ))}
