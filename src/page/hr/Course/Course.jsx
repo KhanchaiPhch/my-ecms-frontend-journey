@@ -4,6 +4,8 @@ import { AppContext } from "../../../conponent/AppContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+
 
 const Course = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,8 +22,8 @@ const Course = () => {
       const token = sessionStorage.getItem("token")
       try {
         const res = await axios.post("http://localhost:9999/courses/showCourse", {
-          courseId: "C001",
-          sessionId: "S002"
+          // courseId: "C001",
+          // sessionId: "S002"
         }, {
           headers: {
             // Bearer
@@ -38,7 +40,6 @@ const Course = () => {
             ...session,
           }))
         );
-
         setFlattenedSessions(flatData);
       }
       catch (error) {
@@ -53,22 +54,23 @@ const Course = () => {
   }, [setPageName]);
 
   const navigate = useNavigate();
-  const CourseDetailReq = async () => {
-    const token = sessionStorage.getItem("token")
-    const reqData = await axios.post("http://localhost:9999/courses/courseDetail", {
-      "courseId": "C004",
-      "sessionId": "S001"
 
-    }, {
-      headers: {
-        authorization: token,
-        "Content-Type": "application/json"
-      }
-    })
-    const resdata = reqData.data.data
-    setCourseSelect(resdata)
-    console.log(resdata)
-  }
+  // const CourseDetailReq = async (courseId, sessionId) => {
+  //   const token = sessionStorage.getItem("token")
+  //   const reqData = await axios.post("http://localhost:9999/courses/courseDetail", {
+  //     // courseId,
+  //     // sessionId
+  //   }, {
+  //     headers: {
+  //       authorization: token,
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //   const resData = reqData.data.data
+  //   setCourseSelect(resData)
+  //   console.log(resData)
+  //   return resData; // ส่งข้อมูลกลับไปให้ปุ่มนำไปใช้
+  // }
 
   // ฟิลเตอร์ข้อมูลตามสถานะ
   const filteredSessions = flattenedSessions.filter((item) => {
@@ -166,8 +168,8 @@ const Course = () => {
                     <td>
                       {/* <Link to={"/CourseDetail"}> */}
                       <button onClick={async () => {
-                        await CourseDetailReq(); // รอให้โหลดข้อมูลเสร็จ
-                        navigate("/CourseDetail"); // แล้วค่อยเปลี่ยนหน้า
+                        // const resData = await CourseDetailReq(item.courseId, item.sessionId); // รอให้โหลดข้อมูลเสร็จ
+                        navigate("/CourseDetail", { state: item }); // แล้วค่อยเปลี่ยนหน้า
                       }}
                         className="btn btn-outline-success pt-[1px] pb-[1px]"
                       >เปิด</button>
@@ -201,11 +203,11 @@ const Course = () => {
             ))}
           </div>
 
-          <Link to={"/AddCourse"}>
+          <Link to={"/CreateCourse"}>
             <button
               className="btn btn-dark"
               style={{ width: "140px", fontSize: "17px" }}
-              onClick={() => setPageName("CreateCourse")}
+              onClick={() => setPageName("สร้างคอร์ส")}
             >
               สร้างคอร์ส
             </button>

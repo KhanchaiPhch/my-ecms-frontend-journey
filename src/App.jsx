@@ -9,7 +9,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./conponent/Layout";
 
-import { AddCourse } from "./page/hr/Course/AddCourse";
+import { CreateCourse } from "./page/hr/Course/CreateCourse";
 import Course from "./page/hr/Course/Course";
 import CourseDetail from "./page/hr/Course/CourseDetail";
 import { CreateSession } from "./page/hr/Course/CreateSession";
@@ -46,7 +46,7 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/Course" element={<Course />} />
               <Route path="/CourseDetail" element={<CourseDetail />} />
-              <Route path="/AddCourse" element={<AddCourse />} />
+              <Route path="/CreateCourse" element={<CreateCourse />} />
               <Route path="/CreateSession" element={<CreateSession />} />
 
               <Route path="/Requset" element={<Requset />} />
