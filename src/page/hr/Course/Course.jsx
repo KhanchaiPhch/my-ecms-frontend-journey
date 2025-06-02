@@ -207,7 +207,7 @@ const Course = () => {
           <div className="flex gap-3">
             <Link to={"/CreateSession"}>
               <button
-                className="btn btn-outline-primary w-100"
+                className="btn btn-primary w-100"
                 style={{ width: "140px", fontSize: "17px" }}
                 onClick={() => setPageName("สร้างคอร์ส")}
               >
@@ -216,7 +216,7 @@ const Course = () => {
             </Link>
             <Link to={"/CreateCourse"}>
               <button
-                className="btn btn-outline-success w-100"
+                className="btn btn-success w-100"
                 style={{ width: "140px", fontSize: "17px" }}
                 onClick={() => setPageName("สร้างคอร์ส")}
               >

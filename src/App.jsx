@@ -9,10 +9,11 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./conponent/Layout";
 
+// import { CreateCourse } from "./page/hr/Course/CreateCourse";
 import { CreateCourse } from "./page/hr/Course/CreateCourse";
 import Course from "./page/hr/Course/Course";
 import CourseDetail from "./page/hr/Course/CourseDetail";
-import { CreateSession } from "./page/hr/Course/CreateSession";
+import CreateSession from "./page/hr/Course/CreateSession";
 
 import { Requset } from "./page/hr/Requset/Requset";
 import Dashboard from "./page/hr/Dashboard/Dashboard";

@@ -17,7 +17,7 @@ export const Headers = ({ setToken }) => {
           {pageName}
         </div>
         <div className="btn-account">
-          <button type="button" className="btn btn-outline-danger " onClick={Logout}>
+          <button type="button" className="btn btn-danger " onClick={Logout}>
             Logout
           </button>
         </div>

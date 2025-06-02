@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
+import { ArrowLeft } from "lucide-react";
 const CourseDetail = () => {
 
     const location = useLocation();
@@ -24,9 +26,20 @@ const CourseDetail = () => {
     } else {
         return (
             <div className="w-full drop-shadow-lg bg-white p-6 rounded mb-[29px]">
-                <Link to={"/Course"}>
+                {/* <Link to={"/Course"}>
                     <button type="button" className="btn btn-outline-secondary pt-[1px] pb-[1px] mb-[10px]">{"< กลับไปหน้าคอร์ส"}</button>
+                </Link> */}
+
+                <Link to="/Course">
+                    <button
+                        type="button"
+                        className="inline-flex items-center px-4 py-2 mb-4 border border-gray-400 text-gray-700 text-sm rounded hover:bg-gray-100 transition"
+                    >
+                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        กลับไปหน้าคอร์ส
+                    </button>
                 </Link>
+
                 <h1 className="text-3xl font-bold mb-2">{Course.courseName}</h1>
                 <p className="text-lg text-gray-600 mb-2">Course ID: {Course.courseId}</p>
                 <div className="text-sm text-gray-500 mb-3">
@@ -93,10 +106,10 @@ const CourseDetail = () => {
                                     {/* แสดงปุ่มถ้าสถานะไม่ complete */}
                                     {session.status !== "complete" && (
                                         <div className="flex gap-2 mt-2">
-                                            <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+                                            <button className="btn btn-success text-white px-3 py-1 rounded hover:bg-green-600">
                                                 เปิด
                                             </button>
-                                            <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                            <button className="btn btn-danger text-white px-3 py-1 rounded hover:bg-red-600">
                                                 ปิด
                                             </button>
                                         </div>

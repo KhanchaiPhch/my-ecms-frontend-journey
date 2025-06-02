@@ -3,7 +3,7 @@ import { AppContext } from "../../../conponent/AppContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { ArrowLeft, ArrowRight } from "lucide-react";
 export const CreateCourse = () => {
   const { setPageName } = useContext(AppContext);
   const [courseId, setCourseId] = useState("");
@@ -18,7 +18,6 @@ export const CreateCourse = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
     if (!courseId || !courseName) {
       setMessage("กรุณากรอกข้อมูลให้ครบถ้วน");
       setSuccess(false);
@@ -28,6 +27,13 @@ export const CreateCourse = () => {
     // แสดง popup ถ้ากรอกครบ
     setShowModal(true);
   };
+
+  useEffect(() => {
+    if (courseId || courseName) {
+      setMessage(false);
+      return;
+    }
+  }, [courseId, courseName])
 
   const navigate = useNavigate();
   const confirmCreateCourse = async () => {
@@ -50,7 +56,7 @@ export const CreateCourse = () => {
         setSuccess(true);
         setCourseId("");
         setCourseName("");
-        setTimeout(() =>  navigate("/CreateSession"), 2000)
+        setTimeout(() => navigate("/CreateSession"), 2000)
 
       } else {
         setMessage("เกิดข้อผิดพลาดในการสร้างคอร์ส");
@@ -67,18 +73,53 @@ export const CreateCourse = () => {
     <div className="w-full bg-white  rounded shadow-xl p-[20px]">
       {/* <h2 className="text-3xl font-bold mb-6  text-gray-700">สร้างคอร์ส</h2> */}
       <div>
-        <Link to={"/Course"}>
+
+        {/* <Link to={"/Course"}>
           <button type="button" className="btn btn-outline-secondary pt-[1px] pb-[1px] mb-[10px]">{"< กลับไปหน้าคอร์ส"}</button>
-        </Link> 
+        </Link>  */}
       </div>
-      {message && (
-        <div
-          className={`mb-4 px-4 py-2 rounded text-sm text-center ${success ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-            }`}
-        >
-          {message}
+      <div className="flex justify-between">
+        <div>
+          <Link to="/Course">
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 mb-4 border border-gray-400 text-gray-700 text-sm rounded hover:bg-gray-300 transition"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              กลับไปหน้าคอร์ส
+            </button>
+          </Link>
+
         </div>
-      )}
+
+        <div>
+          <Link to="/CreateSession">
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 mb-4 border border-gray-400 text-gray-700 text-sm rounded hover:bg-gray-300 transition"
+            >
+              ไปหน้าสร้างรอบ
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </button>
+          </Link>
+
+        </div>
+      </div>
+
+      <div className="h-8">
+        {message && (
+          <div
+            className={
+              ` px-4 py-2 rounded text-sm text-center 
+          ${success
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+              }`}
+          >
+            {message}
+          </div>
+        )}
+      </div>
 
       <form onSubmit={handleFormSubmit}>
         <div className="row">

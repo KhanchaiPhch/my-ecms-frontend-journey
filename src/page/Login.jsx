@@ -29,29 +29,54 @@ export const Login = ({ setToken }) => {
     }
 
   };
-    return (
-      <div className="container-Login">
-        <div className="Login">
-          <Form className="from">
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>User</Form.Label>
-              <Form.Control type="email" placeholder="Username" onChange={e => setUsername(e.target.value)} />
-              <Form.Text className="text-muted"></Form.Text>
-            </Form.Group>
+  return (
+    <div className="h-screen bg-gray-200 flex justify-center items-center">
+      <div className="w-full max-w-md bg-white rounded shadow-xl p-6">
+        <h1>ECMS</h1>
+        <h3>Employee Course Menagement System</h3>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button
-              onClick={login}
-              type="submit"
-              className="btn-button-login   btn btn-secondary"
-            >
-              Login
-            </Button>
-          </Form>
-        </div>
+        <form>
+          {/* Username input */}
+          <div className="mb-4">
+            <label htmlFor="Username" className="block text-sm font-medium text-gray-700 mb-1">
+              Username
+            </label>
+            <input
+              type="text"
+              id="Username"
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          {/* Password input */}
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          {/* Submit button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
+            onClick={login}
+          // onClick={login()} error 
+          >
+            Login
+          </button>
+
+        </form>
+
       </div>
-    );
+    </div>
+  );
 };
