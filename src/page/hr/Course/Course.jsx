@@ -1,39 +1,34 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Container, Table, Button, ButtonGroup } from "react-bootstrap";
 import { AppContext } from "../../../conponent/AppContext";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-
 
 const Course = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterStatus, setFilterStatus] = useState("active"); // ค่าเริ่มต้น: เปิดอยู่
+  const [filterStatus, setFilterStatus] = useState("active");
   const itemsPerPage = 5;
   const [flattenedSessions, setFlattenedSessions] = useState([]);
   const { setPageName } = useContext(AppContext);
-  const [courseAll, setCourseAll] = useState([])
-  const [courseSelect, setCourseSelect] = useState([])
+  const [courseAll, setCourseAll] = useState([]);
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = sessionStorage.getItem("token")
+      const token = sessionStorage.getItem("token");
       try {
-        const res = await axios.post("http://localhost:9999/courses/showCourse", {
-          // courseId: "C001",
-          // sessionId: "S002"
-        }, {
-          headers: {
-            // Bearer
-            "content-Type": "application/json",
-            "authorization": token,
+        const res = await axios.post(
+          "http://localhost:9999/courses/showCourse",
+          {},
+          {
+            headers: {
+              "content-Type": "application/json",
+              authorization: token,
+            },
           }
-        })
-
-        setCourseAll(res.data.data)
-        console.log(courseAll)
+        );
+        setCourseAll(res.data.data);
         const flatData = res.data.data.flatMap((course) =>
           course.sessions.map((session) => ({
             ...course,
@@ -41,8 +36,7 @@ const Course = () => {
           }))
         );
         setFlattenedSessions(flatData);
-      }
-      catch (error) {
+      } catch (error) {
         console.error("Error fetching Course:", error);
       }
     };
@@ -53,33 +47,9 @@ const Course = () => {
     setPageName("คอร์ส");
   }, [setPageName]);
 
-  const navigate = useNavigate();
-
-  // const CourseDetailReq = async (courseId, sessionId) => {
-  //   const token = sessionStorage.getItem("token")
-  //   const reqData = await axios.post("http://localhost:9999/courses/courseDetail", {
-  //     // courseId,
-  //     // sessionId
-  //   }, {
-  //     headers: {
-  //       authorization: token,
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
-  //   const resData = reqData.data.data
-  //   setCourseSelect(resData)
-  //   console.log(resData)
-  //   return resData; // ส่งข้อมูลกลับไปให้ปุ่มนำไปใช้
-  // }
-
-  // ฟิลเตอร์ข้อมูลตามสถานะ
   const filteredSessions = flattenedSessions.filter((item) => {
     if (filterStatus === "all") return true;
-    if (filterStatus === "active") return item.status === "active";
-    if (filterStatus === "ongoing") return item.status === "ongoing";
-    if (filterStatus === "close") return item.status === "close";
-    if (filterStatus === "complete") return item.status === "complete";
-    return true;
+    return item.status === filterStatus;
   });
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -97,135 +67,190 @@ const Course = () => {
   };
 
   return (
-    <div>
-      <Container className="p-0" style={{ marginTop: 20 }}>
-        {/* Filter buttons */}
-        <ButtonGroup className="mb-2">
-          <Button
-            variant={filterStatus === "active" ? "btn btn-secondary" : "btn btn-outline-secondary"}
+    <div className="mx-auto">
+
+      {/* Filter buttons */}
+      <div className="mt-4 mb-[13px]">
+        <span className="rounded bg-gray-300 w-screens p-2">
+          <button
+            className={
+              (filterStatus === "active"
+                ? "bg-gray-400 text-white"
+                : "bg-gray-200") +
+              " text-black px-3 py-1 mr-2 rounded hover:bg-gray-400"
+            }
+            // variant={filterStatus === "active" ? "bg-gray-400" : "bg-gray-300"}
             onClick={() => handleFilterChange("active")}
           >
             เปิดอยู่
-          </Button>
-          <Button
-            variant={filterStatus === "ongoing" ? "btn btn-secondary" : "btn btn-outline-secondary"}
+          </button>
+
+          <button
+            className={
+              (filterStatus === "ongoing"
+                ? "bg-gray-400 text-white"
+                : "bg-gray-200")
+              +
+              " text-black px-3 py-1  mr-2 rounded hover:bg-gray-400"
+            }
+            // variant={filterStatus === "ongoing" ? "bg-gray-400" : "bg-gray-300"}
             onClick={() => handleFilterChange("ongoing")}
           >
             กำลังอบรม
-          </Button>
-          <Button
-            variant={filterStatus === "close" ? "btn btn-secondary" : "btn btn-outline-secondary"}
+          </button>
+
+          <button
+            className={
+              (filterStatus === "close"
+                ? "bg-gray-400 text-white"
+                : "bg-gray-200") +
+              " text-black px-3 py-1 mr-2 rounded hover:bg-gray-400"
+            }
+            // variant={filterStatus === "close" ? "bg-gray-400" : "bg-gray-300"}
             onClick={() => handleFilterChange("close")}
           >
             ปิดอยู่
-          </Button>
-          <Button
-            variant={filterStatus === "complete" ? "btn btn-secondary" : "btn btn-outline-secondary"}
+          </button>
+
+          <button
+            className={
+              (filterStatus === "complete"
+                ? "bg-gray-400 text-white"
+                : "bg-gray-200") +
+              " text-black px-3 py-1 mr-2 rounded hover:bg-gray-400"
+            }
+            // variant={filterStatus === "complete" ? "bg-gray-400" : "bg-gray-300"}
             onClick={() => handleFilterChange("complete")}
           >
             อบรมเสร็จ
-          </Button>
-          <Button
-            variant={filterStatus === "all" ? "btn btn-secondary" : "btn btn-outline-secondary"}
+          </button>
+
+          <button
+            className={
+              (filterStatus === "all"
+                ? "bg-gray-400 text-white"
+                : "bg-gray-200") +
+              " text-black px-3 py-1  rounded hover:bg-gray-400"
+            }
+            // variant={filterStatus === "all" ? "bg-gray-400" : "bg-gray-300"}
             onClick={() => handleFilterChange("all")}
           >
             ทั้งหมด
-          </Button>
-        </ButtonGroup>
+          </button>
+        </span>
+      </div>
 
-        {/* Table */}
-        <div className="drop-shadow-lg bg-white rounded shadow overflow-hidden">
-          <Table bordered responsive className="table-striped table-hover m-0">
-            <thead>
-              <tr className="text-center">
-                <th>ลำดับ</th>
-                <th>รหัสคอร์ส</th>
-                <th>ชื่อคอร์ส</th>
-                <th>รอบ</th>
-                <th>ที่นั่ง</th>
-                <th>วันที่</th>
-                <th>เวลา</th>
-                <th>ชั่วโมง</th>
-                <th>สถานที่</th>
-                {/* <th>สถานะ</th> */}
-                <th>รายละเอียด</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.length > 0 ? (
-                currentItems.map((item, index) => (
-                  <tr key={`${index}`} className="text-center">
-                    <td>{indexOfFirstItem + index + 1}</td>
-                    <td>{item.courseId}</td>
-                    <td>{item.courseName}</td>
-                    <td>{item.sessionId}</td>
-                    <td>{item.courseLimit}</td>
-                    <td>{item.trainingDate}</td>
-                    <td>{item.periods}</td>
-                    <td>{item.hours}</td>
-                    <td>{item.trainingLocation}</td>
-                    {/* <td>{item.status}</td> */}
-                    <td>
-                      {/* <Link to={"/CourseDetail"}> */}
-                      <button onClick={async () => {
-                        // const resData = await CourseDetailReq(item.courseId, item.sessionId); // รอให้โหลดข้อมูลเสร็จ
-                        navigate("/CourseDetail", { state: item }); // แล้วค่อยเปลี่ยนหน้า
-                      }}
-                        className="btn btn-outline-success pt-[1px] pb-[1px]"
-                      >เปิด</button>
-                      {/* </Link> */}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="8" className="text-center">
-                    ไม่พบข้อมูล
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </Table>
+      <div className="drop-shadow-lg bg-white rounded shadow p-6">
+        <div className="mb-4">
+          <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">รายการคอร์ส</h1>
 
-        </div>
-
-        {/* Pagination + Create button */}
-        <div className="d-flex justify-content-between align-items-center mt-3">
-          <div>
-            {Array.from({ length: totalPages }, (_, i) => (
+          {/* Filter buttons */}
+          {/* <div className="flex flex-wrap justify-center gap-2 mb-4">
+            {[
+              { label: "เปิดอยู่", value: "active" },
+              { label: "กำลังอบรม", value: "ongoing" },
+              { label: "ปิดอยู่", value: "close" },
+              { label: "อบรมเสร็จ", value: "complete" },
+              { label: "ทั้งหมด", value: "all" },
+            ].map((btn) => (
               <Button
-                key={i}
-                variant={currentPage === i + 1 ? "btn btn-secondary" : "btn btn-outline-secondary"}
-                className="mr-1"
-                onClick={() => handlePageChange(i + 1)}
+                key={btn.value}
+                variant={filterStatus === btn.value ? "success" : "outline-success"}
+                onClick={() => handleFilterChange(btn.value)}
               >
-                {i + 1}
+                {btn.label}
               </Button>
             ))}
+          </div> */}
+
+          {/* Table */}
+          <div className="overflow-x-auto">
+            <Table bordered responsive className="table-striped table-hover">
+              <thead className="text-center bg-gray-100">
+                <tr>
+                  <th>ลำดับ</th>
+                  <th>รหัสคอร์ส</th>
+                  <th>ชื่อคอร์ส</th>
+                  <th>รอบ</th>
+                  <th>ที่นั่ง</th>
+                  <th>วันที่</th>
+                  <th>เวลา</th>
+                  <th>ชั่วโมง</th>
+                  <th>สถานที่</th>
+                  <th>รายละเอียด</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentItems.length > 0 ? (
+                  currentItems.map((item, index) => (
+                    <tr key={index} className="text-center">
+                      <td>{indexOfFirstItem + index + 1}</td>
+                      <td>{item.courseId}</td>
+                      <td>{item.courseName}</td>
+                      <td>{item.sessionId}</td>
+                      <td>{item.courseLimit}</td>
+                      <td>{item.trainingDate}</td>
+                      <td>{item.periods}</td>
+                      <td>{item.hours}</td>
+                      <td>{item.trainingLocation}</td>
+                      <td>
+                        <button
+                          onClick={() =>
+                            navigate("/CourseDetail", { state: item })
+                          }
+                          className="btn btn-outline-success px-3 py-1"
+                        >
+                          เปิด
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="10" className="text-center py-4 text-gray-500">
+                      ไม่พบข้อมูล
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
           </div>
 
-          <div className="flex gap-3">
-            <Link to={"/CreateSession"}>
-              <button
-                className="btn btn-primary w-100"
-                style={{ width: "140px", fontSize: "17px" }}
-                onClick={() => setPageName("สร้างคอร์ส")}
-              >
-                สร้างรอบ
-              </button>
-            </Link>
-            <Link to={"/CreateCourse"}>
-              <button
-                className="btn btn-success w-100"
-                style={{ width: "140px", fontSize: "17px" }}
-                onClick={() => setPageName("สร้างคอร์ส")}
-              >
-                สร้างคอร์ส
-              </button>
-            </Link>
+          {/* Pagination & Create Buttons */}
+          <div className="flex flex-col lg:flex-row justify-between items-center mt-6 gap-3">
+            <div className="space-x-2">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <Button
+                  key={i}
+                  variant={currentPage === i + 1 ? "primary" : "outline-primary"}
+                  onClick={() => handlePageChange(i + 1)}
+                >
+                  {i + 1}
+                </Button>
+              ))}
+            </div>
+
+            <div className="flex gap-3">
+              <Link to={"/CreateSession"}>
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-5 py-2 rounded"
+                  onClick={() => setPageName("สร้างคอร์ส")}
+                >
+                  สร้างรอบ
+                </button>
+              </Link>
+              <Link to={"/CreateCourse"}>
+                <button
+                  className="bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2 rounded"
+                  onClick={() => setPageName("สร้างคอร์ส")}
+                >
+                  สร้างคอร์ส
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

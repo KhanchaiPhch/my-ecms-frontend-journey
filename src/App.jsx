@@ -16,6 +16,12 @@ import CourseDetail from "./page/hr/Course/CourseDetail";
 import CreateSession from "./page/hr/Course/CreateSession";
 
 import { Requset } from "./page/hr/Requset/Requset";
+import CourseRequest from "./page/hr/Requset/CourseRequest";
+import DetailRequest from "./page/hr/Requset/DetailRequest";
+
+import Reimbursement from "./page/hr/Requset/Reimbursement";
+
+
 import Dashboard from "./page/hr/Dashboard/Dashboard";
 import Employee from "./page/hr/Employee/Employee";
 import Accounts from "./page/hr/Account/Accounts";
@@ -51,6 +57,13 @@ function App() {
               <Route path="/CreateSession" element={<CreateSession />} />
 
               <Route path="/Requset" element={<Requset />} />
+              <Route path="/CourseRequest" element={<CourseRequest />} />
+              <Route path="/DetailRequest" element={<DetailRequest />} />
+
+              <Route path="/Reimbursement" element={<Reimbursement />} />
+
+
+
               <Route path="/Employee" element={<Employee />} />
               <Route path="/Accounts" element={<Accounts />} />
               <Route path="/Results" element={<Results />} />

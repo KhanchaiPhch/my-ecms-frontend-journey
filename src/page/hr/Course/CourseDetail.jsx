@@ -1,17 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
 import { ArrowLeft } from "lucide-react";
-const CourseDetail = () => {
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+const CourseDetail = () => {
+    const navagate = useNavigate()
     const location = useLocation();
     // const Course = location.state?.[0];
     const Course = location.state
+    // console.log(JSON.stringify(Course, null, 2));
+    // console.log("Course from state:", Course);
+    const [message, setMessage] = useState("")
+    const [showModal, setShowModal] = useState(false)
+    const [success, setSuccess] = useState(false)
 
-    console.log(JSON.stringify(Course, null, 2));
-    console.log("Course from state:", Course);
+    const [courseid, setCourseId] = useState({})
+    const [sessionid, setSessionId] = useState({})
 
+    const handleFormSubmit = (sessionId, courseId) => {
+        setCourseId(courseId)
+        setSessionId(sessionId)
+        console.log(typeof (courseId))
+        console.log(typeof (sessionId))
+        // แสดง popup ถ้ากรอกครบ
+        setShowModal(true);
+    };
+
+    const openCourse = async (courseid, sessionid) => {
+        const token = sessionStorage.getItem("token")
+        try {
+            const reqOpen = await axios.post("http://localhost:9999/courses/startCourse",
+                {
+                    courseid,
+                    sessionid
+                }, {
+                headers: {
+                    "authorization": token,
+                    "Content-Type": "application/json"
+                }
+            })
+            if (reqOpen.data.status === "OK") {
+                showModal(false)
+                setSuccess(true)
+                setMessage("เปิดการอบรมสำเร็จ")
+                setTimeout(setSuccess(false), 2000);
+                navagate("./Course")
+            }
+
+        } catch (error) {
+            console.log(error)
+            setSuccess(false)
+            setMessage("เปิดอบรมไม่สำเร็จ เกิดข้อผิดพลาดทางเซิฟเวอร์")
+        }
+
+    }
     if (!Course) {
         return (
             <div>
@@ -48,7 +92,25 @@ const CourseDetail = () => {
                     อัปเดตล่าสุด: {new Date(Course.updatedAt).toLocaleString()}
                 </div>
                 <div className="mb-6">
+
+                    <div className="h-8">
+                        {message && (
+                            <div
+                                className={
+                                    ` px-4 py-2 rounded text-sm text-center 
+                                    ${success
+                                        ? "bg-green-100 text-green-700"
+                                        : "bg-red-100 text-red-700"
+                                    }`}
+                            >
+                                {message}
+                            </div>
+                        )}
+                    </div>
+
                     <h2 className="text-2xl font-semibold mb-2">Sessions</h2>
+
+
                     {Course.sessions.map((session, index) => (
                         <div
                             key={session.sessionId}
@@ -104,22 +166,63 @@ const CourseDetail = () => {
                                     </p>
 
                                     {/* แสดงปุ่มถ้าสถานะไม่ complete */}
-                                    {session.status !== "complete" && (
+                                    {session.status === "active" ? (
+                                        <div className="flex gap-2 mt-2">
+                                            <button
+                                                onClick={() => handleFormSubmit(session.sessionId, Course.courseId)}
+                                                className="btn btn-success text-white px-3 py-1 rounded hover:bg-green-600">
+                                                เริ่มการอบรม
+                                            </button>
+                                        </div>
+                                    ) : session.status === "close" ? (
                                         <div className="flex gap-2 mt-2">
                                             <button className="btn btn-success text-white px-3 py-1 rounded hover:bg-green-600">
                                                 เปิด
                                             </button>
-                                            <button className="btn btn-danger text-white px-3 py-1 rounded hover:bg-red-600">
-                                                ปิด
+                                        </div>
+                                    ) : session.status === "complete" ? (
+                                        <div className="flex gap-2 mt-2">
+                                            {/* s */}
+                                        </div>
+                                    ) : (
+                                        <div className="flex gap-2 mt-2">
+                                            <button className="btn btn-success text-white px-3 py-1 rounded hover:bg-green-600">
+                                                เสร็จสินการอบรม
                                             </button>
                                         </div>
                                     )}
+
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
-            </div>
+                    ))
+                    }
+                </div >
+                {
+                    showModal && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                            <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-lg text-center">
+                                <h3 className="text-xl font-semibold mb-4">ยืนยันการสร้างคอร์ส</h3>
+                                <p className="text-gray-600 mb-6">ต้องการสร้างคอร์สนี้ใช่หรือไม่?</p>
+                                <div className="flex justify-center gap-4">
+                                    <button
+                                        onClick={openCourse}
+                                        className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded"
+                                    >
+                                        ยืนยัน
+                                    </button>
+                                    <button
+                                        onClick={() => setShowModal(false)}
+                                        className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
+                                    >
+                                        ยกเลิก
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            </div >
         );
     }
 };

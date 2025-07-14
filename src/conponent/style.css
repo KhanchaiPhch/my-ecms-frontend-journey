@@ -18,6 +18,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #3c5b6f;
+  /* background-color: rgb(107, 114, 128); */
   color: #fff;
 }
 
@@ -40,7 +41,7 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #000000;
 }
 
 .Menu .item {
@@ -60,7 +61,7 @@ label {
 }
 
 .dashbord {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #000000;
 }
 .dashbord button {
   width: 200px;

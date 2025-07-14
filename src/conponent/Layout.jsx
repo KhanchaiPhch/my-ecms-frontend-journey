@@ -8,7 +8,8 @@ const Layout = ({ setToken }) => {
   return (
     <Container fluid className="p-0">
       <div className="d-flex">
-        <div className="navbar">
+        {/* <div className="navbar">*/}
+        <div className="bg-gray-300 h-screen">
           <Navbar />
         </div>
         <div className="w-100 bg-gray-200">

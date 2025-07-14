@@ -19,7 +19,7 @@ export const Navbar = () => {
 
   return (
     <Container>
-      <div >
+      {/* <div className="rounded-lg bg-gray-400 w-screens p-2"> */}
         <div className="text-center justify-center items-center flex mt-8 mb-12">
           <h1 className="text-4xl font-bold text-white-600 ">
             ECMS
@@ -30,8 +30,10 @@ export const Navbar = () => {
           <Link to={"/"}>
             <button
               className={
-                "btn btn-outline-secondary " +
-                (tab === "Dashboard" ? "btn btn-secondary border-white" : "")
+                (tab === "Dashboard"
+                  ? "bg-gray-400 text-white"
+                  : "bg-gray-200") +
+                " text-black px-3 py-2 rounded hover:bg-gray-400"
               }
               onClick={() => {
                 setTeb("Dashboard");
@@ -59,15 +61,17 @@ export const Navbar = () => {
           </Link>
         </div>
 
-        <label>ตัวเลือก</label>
+        <label className="px-1">ตัวเลือก</label>
 
         <div className="Menu">
           <div className="item">
             <Link to={"/Course"}>
               <button
                 className={
-                  "btn btn-outline-secondary " +
-                  (tab === "Course" ? "btn btn-secondary border-white" : "")
+                  (tab === "Course"
+                    ? "bg-gray-400 text-white"
+                    : "bg-gray-200") +
+                  " text-black px-3 py-2 rounded hover:bg-gray-400"
                 }
                 onClick={() => {
                   setTeb("Course");
@@ -94,8 +98,10 @@ export const Navbar = () => {
             <Link to={"/Requset"}>
               <button
                 className={
-                  "btn btn-outline-secondary " +
-                  (tab === "Requset" ? "btn btn-secondary border-white" : "")
+                  (tab === "Requset"
+                    ? "bg-gray-400 text-white"
+                    : "bg-gray-200") +
+                  " text-black px-3 py-2 rounded hover:bg-gray-400"
                 }
                 onClick={() => {
                   setTeb("Requset");
@@ -123,8 +129,10 @@ export const Navbar = () => {
             <Link to={"/Results"}>
               <button
                 className={
-                  "btn btn-outline-secondary " +
-                  (tab === "Results" ? "btn btn-secondary border-white" : "")
+                  (tab === "Results"
+                    ? "bg-gray-400 text-white"
+                    : "bg-gray-200") +
+                  " text-black px-3 py-2 rounded hover:bg-gray-400"
                 }
                 onClick={() => {
                   setTeb("Results");
@@ -151,8 +159,10 @@ export const Navbar = () => {
             <Link to={"/Employee"}>
               <button
                 className={
-                  "btn btn-outline-secondary " +
-                  (tab === "Employee" ? "btn btn-secondary border-white" : "")
+                  (tab === "Employee"
+                    ? "bg-gray-400 text-white"
+                    : "bg-gray-200") +
+                  " text-black px-3 py-2 rounded hover:bg-gray-400"
                 }
                 onClick={() => {
                   setTeb("Employee");
@@ -181,9 +191,11 @@ export const Navbar = () => {
           <Link to={"/Accounts"}>
             <button
               className={
-                "btn btn-outline-secondary " +
-                (tab === "Accounts" ? "btn btn-secondary border-white" : "")
-              }
+                  (tab === "Accounts"
+                    ? "bg-gray-400 text-white"
+                    : "bg-gray-200") +
+                  " text-black px-3 py-2 rounded hover:bg-gray-400"
+                }
               onClick={() => {
                 setTeb("Accounts");
                 setPageName("โปรไฟล์");
@@ -206,7 +218,80 @@ export const Navbar = () => {
             </button>
           </Link>
         </div>
-      </div>
+      {/* </div> */}
     </Container>
   );
 };
+
+
+// import React, { useEffect, useRef, useContext } from "react";
+// import { Link } from "react-router-dom";
+// import { AppContext } from "./AppContext";
+
+// export const Navbar = () => {
+//   const [tab, setTeb] = React.useState("Dashboard");
+//   const { setPageName } = useContext(AppContext);
+//   const DashboardRef = useRef();
+
+//   useEffect(() => {
+//     setTeb("Dashboard");
+//     DashboardRef.current.click();
+//   }, []);
+
+//   const navItems = [
+//     { name: "Dashboard", label: "ภาพรวม", path: "/" },
+//     { name: "Course", label: "คอร์ส", path: "/Course" },
+//     { name: "Requset", label: "คำขอ", path: "/Requset" },
+//     { name: "Results", label: "ผลลัพธ์การอบรม", path: "/Results" },
+//     { name: "Employee", label: "พนักงาน", path: "/Employee" },
+//   ];
+
+//   return (
+//     <div className="max-w-sm mx-auto py-2 px-4">
+//       <div className="text-center mb-10">
+//         <h1 className="text-4xl font-bold text-white">ECMS</h1>
+//       </div>
+
+//       <div className="mb-6">
+//         {navItems.slice(0, 1).map((item) => (
+//           <Link to={item.path} key={item.name}>
+//             <button
+//               ref={item.name === "Dashboard" ? DashboardRef : null}
+//               className={`w-full text-left px-4 py-2 rounded border text-white ${tab === item.name
+//                   ? "btn btn-secondary"
+//                   : "btn btn-outline-secondary"
+//                 }`}
+//               onClick={() => {
+//                 setTeb(item.name);
+//                 setPageName(item.label);
+//               }}
+//             >
+//               {item.label}
+//             </button>
+//           </Link>
+//         ))}
+//       </div>
+
+//       <label className="block mb-2 text-white">ตัวเลือก</label>
+
+//       <div className="space-y-3 ">
+//         {navItems.slice(1).map((item) => (
+//           <Link to={item.path} key={item.name}>
+//             <button
+//               className={`w-full text-left px-4 py-2 mb-6 rounded border text-white ${tab === item.name
+//                   ? "btn btn-secondary"
+//                   : "btn btn-outline-secondary"
+//                 }`}
+//               onClick={() => {
+//                 setTeb(item.name);
+//                 setPageName(item.label);
+//               }}
+//             >
+//               {item.label}
+//             </button>
+//           </Link>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };

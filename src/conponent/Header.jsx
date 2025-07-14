@@ -12,7 +12,7 @@ export const Headers = ({ setToken }) => {
   const { pageName } = useContext(AppContext)
   return (
     <Container>
-      <div className="drop-shadow-lg bg-white p-4 rounded flex items-center mt-[24px] mb-[29px]">
+      <div className="drop-shadow-lg bg-white p-4 rounded flex items-center mt-[24px] mb-[22px]">
         <div className='text-xl font-semibold text-gray-600'> 
           {pageName}
         </div>
